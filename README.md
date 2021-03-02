@@ -1,1 +1,3 @@
 # smu_code_quiz
+
+Alright, new assignment, this time I need to build a website that can deliver a multiple choice code quiz with a timer and a leaderboard. So I've first organized my assets and index since I don't have anything to start with this time around. My focus is going to be fleshing out a static mock up in html and style it somewhat in css. That should help me identify what I will need to define for variables and help me visualize what I need to add.
