@@ -3,7 +3,8 @@ var option1 = document.querySelector("#optionOne");
 var option2 = document.querySelector("#optionTwo");
 var option3 = document.querySelector("#optionThree");
 var option4 = document.querySelector("#optionFour");
-
+// var localStorageName = "theVeryBest";
+// var highScore;
 var quizPosition;
 var quizStarted = false;
 var quizOver;
@@ -20,6 +21,9 @@ var questions = [
     ["Which event occurs when the user clics on an HTML element?", "onchange", "onclick", "onmouseclick", "onmouseover", 2],
     ["Which operator is used to assign a value to a variable?", "=", "*", "-", "x", 1]
 ]
+
+// highScore = localStorage.getItem(localStorageName) == null ? 0 :
+//             localStorage.getItem(localStorageName);
 
 const FULL_DASH_ARRAY = 283;
 const WARNING_THRESHOLD = 30;
@@ -83,9 +87,6 @@ function startTimer() {
     timerInterval = setInterval((countdown) => {
         timePassed = timePassed += 1;
         timeLeft = timeLimit - timePassed;
-    // document.getElementById("base-timer-label").innerHTML = formatTime(
-    //   timeLeft
-    // );
     document.getElementById("base-timer-label").innerHTML = formatTime(timeLeft);
     setCircleDasharray();
     setRemainingPathColor(timeLeft);
@@ -154,7 +155,7 @@ option2.addEventListener("click", function(event){
         return;
     }
     else if (quizStarted === false){
-        alert("Click the answer button to start the quiz! Each incorrect answer costs you 5 seconds. Can you answer 10 questions in 60 seconds?");
+        alert("Click the answer button to start the quiz! Each incorrect answer costs you 3 seconds. Can you answer 10 questions in 60 seconds?");
     }
     else {
         if (questions [quizPosition][5] === 2) { 
@@ -238,15 +239,3 @@ function battleRound ()
     option4.textContent = questions [quizPosition][4];
 
 };
-
-
-// question.textContent = questions [0][0];
-// option1.textContent = questions [0][1];
-// option2.textContent = questions [0][2];
-// option3.textContent = questions [0][3];
-// option4.textContent = questions [0][4];
-
-// option1.addEventListener("click", function(event) {
-//     option1.textContent = questions [0][1];
-// });
-
