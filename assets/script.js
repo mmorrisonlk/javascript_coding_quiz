@@ -3,8 +3,8 @@ var option1 = document.querySelector("#optionOne");
 var option2 = document.querySelector("#optionTwo");
 var option3 = document.querySelector("#optionThree");
 var option4 = document.querySelector("#optionFour");
-// var localStorageName = "theVeryBest";
-// var highScore;
+var theVeryBest = JSON.parse(localStorage.getItem('hallOfFame')) || [];
+var highScore;
 var quizPosition;
 var quizStarted = false;
 var quizOver;
@@ -22,9 +22,7 @@ var questions = [
     ["Which operator is used to assign a value to a variable?", "=", "*", "-", "x", 1]
 ]
 
-// highScore = localStorage.getItem(localStorageName) == null ? 0 :
-//             localStorage.getItem(localStorageName);
-
+// Where I adapted this wonderful countdown code from https://css-tricks.com/how-to-create-an-animated-countdown-timer-with-html-css-and-javascript/
 const FULL_DASH_ARRAY = 283;
 const WARNING_THRESHOLD = 30;
 const ALERT_THRESHOLD = 10;
@@ -71,8 +69,6 @@ document.getElementById("app").innerHTML = `
     </span>
 </div>
 `;
-
-// document.getElementById("app").innerHTML = '...'
 
 function formatTime(time) {
     const minutes = Math.floor(time/60);
@@ -174,7 +170,7 @@ option3.addEventListener("click", function(event){
         return;
     }
     else if (quizStarted === false){
-        alert("Look at the current highscores!");
+        theBestAround();
     }
     else {
         if (questions [quizPosition][5] === 3) { 
@@ -230,12 +226,30 @@ function timesUp() {
     option4.textContent = "Reload the page to try again!"
 }
 
-function battleRound ()
-{
+function battleRound (){
+if (questions [quizPosition] == null){
+    clearInterval(timerInterval);
+    quizOver = true;
+    var aWinner = prompt("Enter your name, please:")
+    theVeryBest += [aWinner, timeLeft];
+    alert("Your best time has been stored. Refresh to try and beat it!")
+    localStorage.setItem('hallOfFame', JSON.stringify(theVeryBest));
+}
+else {
     question.textContent = questions [quizPosition][0];
     option1.textContent = questions [quizPosition][1];
     option2.textContent = questions [quizPosition][2];
     option3.textContent = questions [quizPosition][3];
     option4.textContent = questions [quizPosition][4];
 
+}
 };
+
+function theBestAround () {
+    if (theVeryBest == 0){
+        alert("This is where the best times go!");
+    }
+    else {
+        alert(theVeryBest);
+    } 
+}
