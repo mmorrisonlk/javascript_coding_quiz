@@ -1,6 +1,6 @@
-# smu_code_quiz
+# javascript_coding_quiz
 
-https://mmorrisonlk.github.io/smu_code_quiz/
+https://mmorrisonlk.github.io/javascript_coding_quiz/
 
 ![Deployed Site](https://github.com/mmorrisonlk/smu_code_quiz/blob/main/assets/codeQuizDeployed.png?raw=true "Deployed to the Web")
 
